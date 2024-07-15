@@ -1,0 +1,29 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+
+.card {
+  padding: 2em;
+}
+.card .Count{
+  margin-bottom: 40px;
+  background-color: violet;
+}
+.card .increment{
+  margin: 40px;
+  background-color: yellow;
+}
+.card .decrement{
+  margin: 40px;
+  background-color: green;
+}
+.card .reset{
+  margin: 40px;
+  background-color: orange;
+}
