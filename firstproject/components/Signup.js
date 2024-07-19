@@ -13,15 +13,22 @@ export default function Signup({ oncompletionsignUp }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("#ADD8E6"); // Default color cyan
-
+  const [backgroundColor, setBackgroundColor] = useState("#90EE90"); // Default color cyan
   function handleCompleteSignUp() {
     oncompletionsignUp(name, email, password);
   }
 
-  function toggleBackgroundColor(value) {
-    const newColor = value ? "#90EE90" : "#D3D3D3"; // Cyan or light grey based on switch value
-    setBackgroundColor(newColor);
+  function toggleBackgroundColor() {
+    setBackgroundColor(setRandomColor());
+  }
+
+  function setRandomColor() {
+    const hexChars = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += hexChars[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 
   return (
@@ -33,7 +40,11 @@ export default function Signup({ oncompletionsignUp }) {
         backgroundColor: backgroundColor,
       }}
     >
-     
+      {/* <ImageBackground
+        source={image}
+        resizeMode="cover"
+        style={{ flex: 1, justifyContent: "center" }}
+      > */}
       <Text
         style={{
           color: "black",
@@ -107,15 +118,23 @@ export default function Signup({ oncompletionsignUp }) {
         secureTextEntry={true}
       />
 
-      <Switch
+      {/* <Switch
         style={{ marginLeft: 70, marginTop: 20 }}
-        value={backgroundColor === "#90EE90"}
+        value={backgroundColor === "#ADD8E6"}
         onValueChange={toggleBackgroundColor}
-      />
+      /> */}
 
       <Card.Actions>
-        <Button onPress={handleCompleteSignUp}>Complete SIGN UP</Button>
+        <Button onPress={handleCompleteSignUp} mode="elevated">
+          Complete SIGN UP
+        </Button>
       </Card.Actions>
+      <Card.Actions>
+        <Button onPress={toggleBackgroundColor} mode="elevated">
+          Click here to change
+        </Button>
+      </Card.Actions>
+      {/* </ImageBackground> */}
     </View>
   );
 }

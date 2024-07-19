@@ -4,7 +4,6 @@ import {
   View,
   TextInput,
 } from "react-native";
-import { useState } from "react";
 import { Button, Card } from "react-native-paper";
 
 export default function Gettingstarted({ onsignUp }) {
