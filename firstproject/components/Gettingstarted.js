@@ -1,6 +1,11 @@
-
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+} from "react-native";
 import { useState } from "react";
+import { Button, Card } from "react-native-paper";
 
 export default function Gettingstarted({ onsignUp }) {
   return (
@@ -9,14 +14,17 @@ export default function Gettingstarted({ onsignUp }) {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#ADD8E6",
+        backgroundColor: "#90EE90",
       }}
     >
-      <Text style={{ marginLeft: 50, fontSize: 20, fontWeight: "bold" }}>
-        HELLO USER
-      </Text>
+      
+        <Text style={{ marginLeft: 40, fontSize: 30, fontWeight: "bold" }}>
+          HELLO USER
+        </Text>
 
-      <Button title="SIGN UP" color="green" onPress={onsignUp} />
+        <Card.Actions>
+          <Button onPress={onsignUp}>signup</Button>
+        </Card.Actions>
     </View>
   );
 }
