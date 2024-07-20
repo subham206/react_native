@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Text, ScrollView, StyleSheet } from "react-native";
+import {useNavigation} from '@react-navigation/native'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Card, Title, Paragraph, Button, IconButton } from "react-native-paper"; // Import IconButton from react-native-paper
 import { UserContext } from "../context/UserContext";
 

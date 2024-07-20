@@ -4,9 +4,15 @@ import {
   View,
   TextInput,
 } from "react-native";
+import {useNavigation} from '@react-navigation/native'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Button, Card } from "react-native-paper";
 
-export default function Gettingstarted({ onsignUp }) {
+export default function Gettingstarted({ navigation }) {
+  const Signup =() =>{
+    console.log("I m from Gettingstarted page");
+    navigation.navigate('Signup');
+}
   return (
     <View
       style={{
@@ -22,7 +28,7 @@ export default function Gettingstarted({ onsignUp }) {
         </Text>
 
         <Card.Actions>
-          <Button onPress={onsignUp}>signup</Button>
+          <Button onPress={Signup}>signup</Button>
         </Card.Actions>
     </View>
   );

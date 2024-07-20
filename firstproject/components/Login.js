@@ -5,12 +5,25 @@ import {
   TextInput,
 } from "react-native";
 import { useState } from "react";
+import {useNavigation} from '@react-navigation/native'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Button, Card } from "react-native-paper";
+import { useRoute } from "@react-navigation/native";
 
-export default function Login({ oncompletionlogin, email, password }) {
+export default function Login({ navigation }) {
+  const route = useRoute();
+  const name = route.params.name;
+  const email = route.params.email;
+  const password = route.params.password;
+  const Dashboard =() =>{
+    console.log("I m from Login page");
+    navigation.navigate('Dashboard',{
+      name,
+    });
+}
   function validate() {
     if (email === loginEmail && password === loginPassword) {
-      oncompletionlogin();
+      Dashboard();
     } else {
       alert("INVALID CREDENTIAL");
     }
