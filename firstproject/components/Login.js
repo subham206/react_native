@@ -4,32 +4,41 @@ import {
   View,
   TextInput,
 } from "react-native";
-import { useState } from "react";
-import {useNavigation} from '@react-navigation/native'
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { Button, Card } from "react-native-paper";
 import { useRoute } from "@react-navigation/native";
 
+import { useState } from "react";
+import { Button, Card } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export default function Login({ navigation }) {
-  const route = useRoute();
-  const name = route.params.name;
-  const email = route.params.email;
-  const password = route.params.password;
-  const Dashboard =() =>{
-    console.log("I m from Login page");
-    navigation.navigate('Dashboard',{
-      name,
-    });
-}
-  function validate() {
-    if (email === loginEmail && password === loginPassword) {
-      Dashboard();
+  
+
+  // const route = useRoute();
+  // const name = route.params.name;
+  // const email = route.params.email;
+  // const password = route.params.password;
+
+  const handleGotoDashboardPage = () => {
+    console.log("I m from login page");
+
+    navigation.navigate("DashboardStack");
+  };
+
+  async function validate() {
+    const userDetailString = await AsyncStorage.getItem("userDetail"); //Fetches data in string format
+    const userDetail = userDetailString ? JSON.parse(userDetailString) : {}; //converts the string format data into object if not empty else it creates an empty object.
+   console.log(userDetail) ;
+   if (
+      userDetail.email === loginEmail &&
+      userDetail.password === loginPassword
+    ) {
+      handleGotoDashboardPage();
     } else {
       alert("INVALID CREDENTIAL");
     }
   }
-  const [loginEmail, setloginEmail] = useState(" ");
-  const [loginPassword, setloginPassword] = useState(" ");
+  const [loginEmail, setloginEmail] = useState("");
+  const [loginPassword, setloginPassword] = useState("");
   return (
     <View
       style={{
@@ -39,7 +48,6 @@ export default function Login({ navigation }) {
         backgroundColor: "#90EE90",
       }}
     >
-      
         <Text
           style={{
             marginLeft: 70,

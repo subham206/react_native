@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import { Text, ScrollView, StyleSheet } from "react-native";
-import {useNavigation} from '@react-navigation/native'
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Card, Title, Paragraph, Button, IconButton } from "react-native-paper"; // Import IconButton from react-native-paper
 import { UserContext } from "../context/UserContext";
 
-const Favorites = ({ onDashboard }) => {
-  const { favorites } = useContext(UserContext);
+const Favorites = ({ navigation }) => {
+  const { state } = useContext(UserContext);
+  const { favorites } = state;
+  const handleGotoDashboardPage = () => {
+    console.log("I m from Favorites page");
+
+    navigation.navigate("Dashboard");
+  };
 
   return (
     <>
@@ -22,7 +26,7 @@ const Favorites = ({ onDashboard }) => {
         Your Favorites
       </Text>
       <Button
-        onPress={onDashboard}
+        onPress={handleGotoDashboardPage}
         style={{
           margin: 20,
           padding: 5,
